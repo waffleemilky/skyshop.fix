@@ -4,6 +4,7 @@ import org.skypro.skyshop.fix.exceptions.NoSuchProductException;
 import org.skypro.skyshop.fix.model.basket.Basket;
 import org.skypro.skyshop.fix.model.basket.BasketItem;
 import org.skypro.skyshop.fix.model.basket.UserBasket;
+import org.skypro.skyshop.fix.model.product.Product;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -18,10 +19,10 @@ public class BasketService {
         this.storageService = storageService;
     }
 
-    public void addProductToBasket(UUID id) {
-        storageService.getProductById(id)
-                .orElseThrow(() -> new NoSuchProductException(id)); // ← Изменено здесь
-        basket.addProduct(id);
+    public void addProduct(UUID userId, UUID productId) {
+        Product product = storageService.getProductById(productId)
+                .orElseThrow(() -> new NoSuchProductException(UUID.randomUUID()));
+        basket.addProduct(UUID.randomUUID());
     }
 
     public UserBasket getUserBasket() {

@@ -4,6 +4,7 @@ public final class SearchResult {
     private final String id;
     private final String name;
     private final String contentType;
+    private String description;
 
     public SearchResult(String id, String name, String contentType) {
         this.id = id;
@@ -29,5 +30,9 @@ public final class SearchResult {
 
     public String getContentType() {
         return contentType;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
